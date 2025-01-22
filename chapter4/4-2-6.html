@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>サンプルタイトル</title>
+    <!-- leadfetのCSS読み込み -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        crossorigin=""
+    />
+    <!-- leafletのJavaScript 読み込み -->
+    <script
+     src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+     crossorigin=""
+    /></script>
+    <script
+     src="https://unpkg.com/leaflet.markercluster@1.3.0/dist/leaflet.markercluster.js"
+     crossorigin=""
+    /></script>
+    <link
+     rel="stylesheet"
+     href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.css"
+     crossorigin=""
+    />
+    <link
+     rel="stylesheet"
+     href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.Default.css"
+     crossorigin=""
+    />
+</head>
+    <body>
+        <div id="map" style="height: 80vh;"></div>
+        <script>
+            const map = L.map('map').setView([35.3627808, 138.7307908], 14);
+            const backgroundLayer = L.tileLayer(
+                'https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg',
+                {
+                    maxZoom: 17,
+                    attribution: '&copy;<a http://www.openstreetmap.org/copyright>地理院タイル</a> '
+                },
+            );
+            map.addLayer(backgroundLayer);
+
+            // 円を描画する
+            L.circle([35.3627808, 138.7307908], {
+                color: 'red',
+                fillColor: '#f03',
+                fillOpacity: 0.5,
+                radius: 500
+            })
+            .bindPopup('富士山')
+            .addTo(map);
+
+            // 線を描画する
+            L.polyline([
+                [35.36, 138.73],
+                [35.37, 138.74],
+                [35.38, 138.75],
+                [35.39, 138.76],
+                [35.40, 138.77],
+            ], {color: 'blue'})
+            .bindPopup('富士山の登山道')
+            .addTo(map);
+
+            // ポリゴンを描画する
+            L.polygon([
+                [35.36, 138.7307908],
+                [35.35, 138.74],
+                [35.34, 138.72],
+            ], {color: 'green'})
+            .bindPopup('富士山')
+            .addTo(map);
+        </script>
+    </body>
+</html>

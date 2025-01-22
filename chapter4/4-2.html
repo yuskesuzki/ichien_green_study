@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>サンプルタイトル</title>
+    <!-- leadfetのCSS読み込み -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        crossorigin=""
+    />
+    <!-- leafletのJavaScript 読み込み -->
+    <script
+     src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+     crossorigin=""
+     /></script>
+    <body>
+        <div id="map" style="height: 80vh;"></div>
+        <script>
+            const map = L.map('map').setView([35.681236, 139.767125], 5);
+            const backgroundLayer = L.tileLayer(
+                'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                {
+                    maxZoom: 19,
+                    attribution: '&copy;<a http://www.openstreetmap.org/copyright>contributors</a> contributors'
+                },
+            );
+            map.addLayer(backgroundLayer);
+        </script>
+    </body>
+</html>

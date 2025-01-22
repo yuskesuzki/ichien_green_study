@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>サンプルタイトル</title>
+    <!-- leadfetのCSS読み込み -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        crossorigin=""
+    />
+    <!-- leafletのJavaScript 読み込み -->
+    <script
+     src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+     crossorigin=""
+     /></script>
+    <body>
+        <div id="map" style="height: 80vh;"></div>
+        <script>
+            const map = L.map('map').setView([35.681236, 139.767125], 5);
+            const backgroundLayer = L.tileLayer(
+                'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                {
+                    maxZoom: 19,
+                    attribution: '&copy;<a http://www.openstreetmap.org/copyright>contributors</a> contributors'
+                },
+            );
+
+            // ピン定義
+            const marker = L.marker([33, 129.5]);
+            marker.bindPopup('平面直角座標1系原点');
+            map.addLayer(backgroundLayer);
+            map.addLayer(marker);
+
+            L.marker([33, 131.0]).bindPopup('平面直角座標2系原点').addTo(map);
+            L.marker([36, 132.16666]).bindPopup('平面直角座標3系原点').addTo(map);
+            L.marker([33, 133.5]).bindPopup('平面直角座標4系原点').addTo(map);
+            L.marker([36, 134.333333]).bindPopup('平面直角座標5系原点').addTo(map);
+            L.marker([36, 136.0]).bindPopup('平面直角座標6系原点').addTo(map);
+            L.marker([33, 137.166666]).bindPopup('平面直角座標7系原点').addTo(map);
+            L.marker([36, 138.5]).bindPopup('平面直角座標8系原点').addTo(map);
+            L.marker([33, 131.0]).bindPopup('平面直角座標9系原点').addTo(map);
+            L.marker([33, 131.0]).bindPopup('平面直角座標10系原点').addTo(map);
+            L.marker([33, 131.0]).bindPopup('平面直角座標11系原点').addTo(map);
+            L.marker([33, 131.0]).bindPopup('平面直角座標12系原点').addTo(map);
+            L.marker([33, 131.0]).bindPopup('平面直角座標13系原点').addTo(map);
+            L.marker([33, 131.0]).bindPopup('平面直角座標14系原点').addTo(map);
+            L.marker([33, 131.0]).bindPopup('平面直角座標15系原点').addTo(map);
+            L.marker([33, 131.0]).bindPopup('平面直角座標16系原点').addTo(map);
+            L.marker([33, 131.0]).bindPopup('平面直角座標17系原点').addTo(map);
+            L.marker([33, 131.0]).bindPopup('平面直角座標18系原点').addTo(map);
+</script>
+    </body>
+</html>
