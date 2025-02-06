@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>9.地図上に大きな画像を表示する</title>
+        <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
+        <link
+            href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div id="map" style="height: 80vh"></div>
+        <script>
+            // ラスタータイルが、このファイルからの相対パスで`./tiles`ディレクトリに保存されているとします
+            const rastertileUrl = `${location.href.replace('/4-2-10-1.html', '')}/tiles/{z}/{x}/{y}.png`;
+
+            const map = new maplibregl.Map({
+                container: 'map',
+                center: [136.0881, 35.2406],
+                zoom: 0,
+                style: {
+                    version: 8,
+                    sources: {
+                        naturalearth: {
+                            type: 'raster',
+                            tiles: [rastertileUrl],
+                            tileSize: 256,
+                            maxzoom: 5,
+                            attribution:
+                                '<a href="https://www.naturalearthdata.com/">Natural Earth</a>',
+                        },
+                    },
+                    layers: [
+                        {
+                            id: 'naturalearth-layer',
+                            source: 'naturalearth',
+                            type: 'raster',
+                        },
+                    ],
+                },
+            });
+        </script>
+    </body>
+</html>

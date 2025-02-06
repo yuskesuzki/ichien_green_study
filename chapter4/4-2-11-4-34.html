@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>10.地図のスタイリング</title>
+        <script src="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.js"></script>
+        <link
+            href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div id="map" style="height: 80vh"></div>
+        <script>
+            const map = new maplibregl.Map({
+                container: 'map',
+                center: [137.1, 36.5],
+                zoom: 5,
+                style: {
+                    version: 8,
+                    glyphs: './fonts/{fontstack}/{range}.pbf', // フォントデータを指定
+                    sources: {
+                        osm: {
+                            type: 'raster',
+                            tiles: [
+                                'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                            ],
+                            tileSize: 256,
+                            maxzoom: 18,
+                            attribution:
+                                '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+                        },
+                    },
+                    layers: [
+                        {
+                            // 背景色
+                            id: 'background',
+                            type: 'background',
+                            paint: {
+                                'background-color': '#555', // グレー
+                            },
+                        },
+                        {
+                            id: 'osm-layer',
+                            source: 'osm',
+                            type: 'raster',
+                        },
+                    ],
+                },
+            });
+        </script>
+    </body>
+</html>
